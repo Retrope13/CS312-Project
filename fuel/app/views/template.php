@@ -10,9 +10,7 @@
 <body>
     <header>
         <ul>
-            <li><a href="https://cs.colostate.edu:4444/~sammckay/cs312/fuelviews/index.php/eastwest/index">Home</a></li>
-            <?php echo '<li><a href="https://cs.colostate.edu:4444/~sammckay/cs312/fuelviews/index.php/eastwest/'.$direction.'">East</a></li>'?>
-            <?php echo '<li><a href="https://cs.colostate.edu:4444/~sammckay/cs312/fuelviews/index.php/eastwest/'.$direction2.'">West</a></li>'?>
+            <li><a href="https://cs.colostate.edu:4444/~sammckay/cs312/fuelviews/index.php/colorpicker/index">Home</a></li>
 
         </ul>
     </header>
