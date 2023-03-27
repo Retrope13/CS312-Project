@@ -10,5 +10,6 @@
         <form name="columns form" action="" method="get">
             <input type="number" name="columns" id="columns" value="columns"/>
         </form>
+        <input type="submit"/>
     </main>
 </body>
