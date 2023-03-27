@@ -1,0 +1,23 @@
+main {
+    color: blue;
+}
+
+ul {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    margin-left: 2%;
+}
+
+input {
+    margin-bottom: 1%;
+}

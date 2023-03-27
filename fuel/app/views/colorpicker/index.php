@@ -3,10 +3,13 @@
 		<h3>HomePage</h3>
 	</header>
 	<main>
-    PLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras euismod dapibus efficitur. Aliquam et arcu at ligula sagittis ornare. Pellentesque venenatis consequat tempus. Integer hendrerit ante ac eleifend dapibus. Nunc luctus vitae metus et viverra. Quisque vulputate pretium mi. Curabitur egestas maximus maximus. Duis fringilla fringilla tempus. Aliquam fringilla mollis elementum. Etiam vehicula libero mi, at luctus nibh finibus ut. Etiam non interdum quam. Sed luctus ipsum et efficitur convallis. Nullam ultrices risus at lacus dignissim, eu pharetra erat mollis. Proin nec consectetur erat, nec commodo diam.
-    Nulla facilisis, risus non finibus scelerisque, mauris nibh efficitur tortor, sed fringilla ligula lectus sit amet ligula. Suspendisse lacus ex, convallis id cursus ac, bibendum nec nunc. Cras vitae ligula fermentum sem vulputate porta. Morbi nec molestie libero, a tristique est. Cras nec dui non enim finibus auctor. Aliquam erat volutpat. Morbi viverra porta mattis. Vivamus accumsan ultricies lorem, nec fringilla risus suscipit nec. In hac habitasse platea dictumst. Fusce vel volutpat turpis.
-    Nam a eros quis purus elementum varius nec et tortor. Nullam metus risus, convallis ac sapien dignissim, blandit vestibulum orci. Sed malesuada elit sit amet purus sodales pellentesque. Duis placerat sit amet ante vitae vulputate. Mauris eget tristique turpis. Praesent imperdiet dui faucibus quam imperdiet ultrices. Sed tortor lorem, gravida consequat iaculis vitae, hendrerit non ex. Aenean aliquet nibh porta libero venenatis, eget pulvinar dolor porta. Sed a ipsum mattis, ultrices urna non, finibus sem. Aliquam blandit quam sit amet purus lacinia, sed gravida nisi laoreet. Sed sed fringilla turpis. Vestibulum rhoncus elit porttitor, elementum lorem et, vulputate lectus. Praesent consequat ut orci a semper. Ut suscipit ac lorem et dignissim. Phasellus venenatis imperdiet diam iaculis pellentesque.
-    Maecenas nec lobortis sapien. Nulla in lectus ornare, rhoncus erat vel, tincidunt orci. Nulla vel diam vel leo facilisis porttitor. Etiam ornare in mauris hendrerit aliquet. Mauris eu mi sagittis, sollicitudin nisl in, luctus orci. Aliquam id vulputate nibh. Vivamus tempus consequat ipsum, sit amet volutpat nibh. Quisque lobortis vitae diam vitae ultrices. Suspendisse ac ultricies sapien. Nulla nibh justo, malesuada eget congue sit amet, porta sed lectus
-    Vestibulum iaculis dapibus libero. In sed nisl fringilla, lobortis justo vel, vehicula felis. Curabitur odio lacus, gravida non laoreet eu, euismod aliquet nulla. Etiam sed mauris eget risus bibendum viverra et nec magna. Duis eget mi nec dui suscipit sodales in nec metus. Etiam volutpat vel metus quis sodales. Vestibulum maximus in diam sed sollicitudin. Nam pulvinar magna laoreet, venenatis lorem eu, ornare felis. Pellentesque suscipit velit eget sem accumsan, non semper mi gravida. Vestibulum lorem ante, commodo nec auctor at, tincidunt nec nibh. Maecenas dapibus a velit eget sollicitudin.
+        <form name="rows form" action="" method="get">
+            <input type="number" name="rows" id="rows" value="rows"/>
+        <form>
+        </br>
+        <form name="columns form" action="" method="get">
+            <input type="number" name="columns" id="columns" value="columns"/>
+        </form>
+        <input type="submit"/>
     </main>
 </body>
