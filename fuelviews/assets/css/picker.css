@@ -4,8 +4,9 @@ main {
 
 ul {
     text-decoration: none;
-    display: inline;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 a {
@@ -15,5 +16,4 @@ a {
 li {
     display: inline;
     margin-left: 2%;
-
 }
