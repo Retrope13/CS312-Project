@@ -1,3 +1,16 @@
 main {
     color: blue;
 }
+
+ul {
+    text-decoration: none;
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+}
