@@ -10,7 +10,7 @@
 <body>
     <header>
         <ul>
-            <li><a href="https://cs.colostate.edu:4444/~sammckay/cs312/fuelviews/index.php/colorpicker/index">Home</a></li>
+            <li><a href="https://cs.colostate.edu:4444/~sammckay/m1/fuelviews/index.php/colorpicker/index">Home</a></li>
 
         </ul>
     </header>
