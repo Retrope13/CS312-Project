@@ -1,6 +1,6 @@
 <body>
     <header>
-		<h3>HomePage</h3>
+		<h3>The Color Garden</h3>
 	</header>
 	<main>
         <form name="rows form" action="" method="get">
