@@ -1,0 +1,29 @@
+main {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    display: inline;
+    color: rgb(230, 226, 218);
+}
+
+li {
+    display: inline;
+    margin-right: 10%;
+    margin-left: 0%;
+}
+
+ul {
+    background-color: rgb(56, 56, 56);
+    border-radius: 50px;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    max-width: 40%;
+    text-align: center;
+    margin-left: 25%;
+}
+
+header {
+    
+}
