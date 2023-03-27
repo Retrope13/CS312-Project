@@ -10,8 +10,8 @@
 <body>
     <header>
         <ul>
-            <li><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/index">Home</a></li>
-            <li><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/about">About us</a></li>
+            <li><button><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/index">Home</a></button></li>
+            <li><button><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/about">About us</a></button></li>
 
         </ul>
     </header>
