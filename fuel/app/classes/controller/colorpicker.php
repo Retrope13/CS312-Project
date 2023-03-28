@@ -16,7 +16,7 @@ class Controller_ColorPicker extends Controller_Template {
     public function action_about() {
         $data = array();
         $this->template->title = "About Page";
-        $this->template->css = "picker.css";
+        $this->template->css = "about.css";
         $this->template->content = View::forge('colorpicker/about.php', $data);
 
     }
