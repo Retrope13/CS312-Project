@@ -3,6 +3,23 @@
 		<h3>About Us</h3>
 	</header>
 	<main>
-        This is the main of the about page
+    <div id='samAbout'> 
+        <p>hi</p>
+            
+    </div>
+    <div id='samanthaAbout'> 
+        <p>hi</p>
+            
+    </div>
+    <div id='gabriellaAbout'> 
+        <p>hi</p>
+            
+    </div>
+
+    <div id='charlieAbout'> 
+        <p>hi</p>
+        <?php echo Asset::img('CharlieFormal.jpg') ?> 
+    </div>
+
     </main>
 </body>

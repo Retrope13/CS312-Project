@@ -1,0 +1,30 @@
+#charlieAbout {
+    text-align: left;
+    background-color: red;
+    display:flex;
+}
+
+#samanthaAbout {
+    justify-content: right;
+    text-align: right;
+    background-color: aqua;
+}
+
+#samAbout {
+    justify-content: right;
+    text-align: right;
+    background-color: rgb(255, 145, 0);
+}
+
+#gabriellaAbout {
+    justify-content: right;
+    text-align: right;
+    background-color: rgb(101, 179, 248);
+}
+
+#charlieAbout img {
+    width: 250px;
+    height:auto;
+    float: right;
+    padding: 40px;
+}
