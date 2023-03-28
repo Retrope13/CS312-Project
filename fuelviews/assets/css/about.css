@@ -1,33 +1,29 @@
-#charlieAbout {
-    background-color: red;
-    display:flex;
-    flex-direction: row-reverse;
-    align-items: center;
+.oddAbout {
+    background-color: lightblue;
+    overflow:auto;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#charlieAbout p {
-    padding: 20px;
-}
-
-#charlieAbout img {
+.oddAbout img {
     width: 250px;
     height: auto;
-    margin-left: 20px;
+    float: right;
 }
 
-#samanthaAbout {
+
+.evenAbout {
+    background-color: rgb(251, 195, 91);
+    overflow:auto;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: right;
-    background-color: aqua;
 }
 
-#samAbout {
-    /* justify-content: left; */
-    text-align: left;
-    background-color: rgb(255, 145, 0);
-}
-
-#gabriellaAbout {
-    /* justify-content: left; */
-    text-align: left;
-    background-color: rgb(101, 179, 248);
+.evenAbout img{
+    width: 250px;
+    height: auto;
+    float: left;
 }
