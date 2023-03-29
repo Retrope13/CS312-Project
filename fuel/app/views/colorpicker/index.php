@@ -1,17 +1,17 @@
 <body>
     <header>
-		<h3>HomePage</h3>
+		<h3>Go ahead and choose dimensions for you table and the number of colors you want!</h3>
 	</header>
 	<main>
-        <form name="rows form" action="" method="get">
-            <label for="rows">Enter the number of Rows/Columns:</label>
-            <input type="number" name="rows" id="rows" value="rows"/>
+        <form name="rows form" action="" method="POST">
+            <input type="number" name="rows" id="rows" placeholder="# of rows/columns"value="rows"/>
         <form>
         </br>
-        <form name="columns form" action="" method="get">
-        <label for="colors">Enter the number of Colors:</label>
-            <input type="number" name="colors" id="colors" value="colors"/>
+        <form name="columns form" action="" method="POST">
+            <input type="number" name="colors" id="colors" placeholder="# of colors" value="colors"/>
         </form>
-        <input type="submit"/>
+        <form action="table" method="POST">
+        <input id = "submit" type="submit"/>
+        </form>
     </main>
 </body>
