@@ -3,6 +3,7 @@
 class Controller_ColorPicker extends Controller_Template {
 
     public $title = "";
+    public $rows = 0;
 
     public function action_index() {
 
@@ -10,6 +11,10 @@ class Controller_ColorPicker extends Controller_Template {
         $this->template->title= "Color Picker Home";
         $this->template->css = "main.css";
         $this->template->content = View::forge('colorpicker/index', $data);
+
+        if(isset($_GET['rows'])) {
+            $rows = $_GET['rows'];
+        }
 
     }
 
@@ -26,6 +31,10 @@ class Controller_ColorPicker extends Controller_Template {
         $this->template->title = "Table Page";
         $this->template->css = "table.css";
         $this->template->content = View::forge('colorpicker/colorTable.php', $data);
+
+        if(isset($_GET['rows'])) {
+            $rows = $_GET['rows'];
+        }
     }
 
 
