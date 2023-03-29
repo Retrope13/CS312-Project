@@ -1,6 +1,6 @@
 <body>
     <header>
-		<h3>About Us</h3>
+		<h2>About Us</h2>
 	</header>
 	<main>
     <div class='evenAbout'> 

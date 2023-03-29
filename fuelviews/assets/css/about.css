@@ -2,6 +2,11 @@ body {
     background-color: #1e335c;
 }
 
+h2 {
+    text-align: center;
+    font-size: xx-large;
+}
+
 .oddAbout {
     background-color: lightblue;
     overflow:auto;
