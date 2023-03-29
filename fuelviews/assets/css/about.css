@@ -1,9 +1,25 @@
+body {
+    background-color: #1e335c;
+}
+
+h2 {
+    text-align: center;
+    font-size: xx-large;
+}
+
 .oddAbout {
     background-color: lightblue;
     overflow:auto;
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.oddAbout p{
+    font-size: larger;
+    word-wrap: break-word;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .oddAbout img {
@@ -26,4 +42,10 @@
     width: 250px;
     height: auto;
     float: left;
+}
+.evenAbout p{
+    font-size: larger;
+    word-wrap: break-word;
+    text-align: left;
+    padding-left: 10px;
 }
