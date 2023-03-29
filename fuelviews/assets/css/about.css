@@ -19,6 +19,7 @@ h2 {
     font-size: larger;
     word-wrap: break-word;
     text-align: left;
+    padding-left: 10px;
 }
 
 .oddAbout img {
@@ -46,4 +47,5 @@ h2 {
     font-size: larger;
     word-wrap: break-word;
     text-align: left;
+    padding-left: 10px;
 }
