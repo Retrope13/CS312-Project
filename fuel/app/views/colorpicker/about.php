@@ -3,20 +3,23 @@
 		<h3>About Us</h3>
 	</header>
 	<main>
-    <div id='samAbout'> 
+    <div class='evenAbout'> 
         <p>hi</p>
+        <?php echo Asset::img('CharlieFormal.jpg') ?> 
             
     </div>
-    <div id='samanthaAbout'> 
+    <div class='oddAbout'> 
         <p>hi</p>
+        <?php echo Asset::img('CharlieFormal.jpg') ?> 
             
     </div>
-    <div id='gabriellaAbout'> 
+    <div class='evenAbout'> 
         <p>hi</p>
+        <?php echo Asset::img('CharlieFormal.jpg') ?> 
             
     </div>
 
-    <div id='charlieAbout'> 
+    <div class='oddAbout'> 
         <p>hi</p>
         <?php echo Asset::img('CharlieFormal.jpg') ?> 
     </div>
