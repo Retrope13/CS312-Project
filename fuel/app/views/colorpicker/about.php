@@ -4,24 +4,25 @@
 	</header>
 	<main>
     <div class='evenAbout'> 
-        <p>hi</p>
         <?php echo Asset::img('CharlieFormal.jpg') ?> 
+        <p>hicdcndjcdjndcjdncdjcndjcdncdjcdedecececejcndncdncdkdcdkndcndcjdjcdncdjncdjcdncdjcndcjdncdjcnjndcndj</p>
+        
             
     </div>
     <div class='oddAbout'> 
-        <p>hi</p>
         <?php echo Asset::img('CharlieFormal.jpg') ?> 
+        <p>hi</p>
             
     </div>
     <div class='evenAbout'> 
-        <p>hi</p>
         <?php echo Asset::img('CharlieFormal.jpg') ?> 
+        <p>hi</p>
             
     </div>
 
     <div class='oddAbout'> 
-        <p>hi</p>
         <?php echo Asset::img('CharlieFormal.jpg') ?> 
+        <p>hi</p>
     </div>
 
     </main>

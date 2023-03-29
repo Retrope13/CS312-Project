@@ -10,6 +10,12 @@ body {
     margin-right: auto;
 }
 
+.oddAbout p{
+    font-size: larger;
+    word-wrap: break-word;
+    text-align: left;
+}
+
 .oddAbout img {
     width: 250px;
     height: auto;
@@ -30,4 +36,9 @@ body {
     width: 250px;
     height: auto;
     float: left;
+}
+.evenAbout p{
+    font-size: larger;
+    word-wrap: break-word;
+    text-align: left;
 }
