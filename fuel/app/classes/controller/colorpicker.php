@@ -8,7 +8,7 @@ class Controller_ColorPicker extends Controller_Template {
 
         $data = array();
         $this->template->title= "Color Picker Home";
-        $this->template->css = "picker.css";
+        $this->template->css = "main.css";
         $this->template->content = View::forge('colorpicker/index', $data);
 
     }
@@ -19,6 +19,13 @@ class Controller_ColorPicker extends Controller_Template {
         $this->template->css = "about.css";
         $this->template->content = View::forge('colorpicker/about.php', $data);
 
+    }
+
+    public function action_table() {
+        $data = array();
+        $this->template->title = "Table Page";
+        $this->template->css = "table.css";
+        $this->template->content = View::forge('colorpicker/colorTable.php', $data);
     }
 
 
