@@ -13,5 +13,20 @@
         <form action="table" method="POST">
         <input id = "submit" type="submit"/>
         </form>
+
+
+
+        <table>
+            <?php
+                for($i = 0; $i<10; $i++) {
+                    echo "<tr>";
+                    for($j = 0; $j<10; $j++) {
+                        echo "<td>   </td>";
+                    }
+                echo "<tr>";
+                }
+
+            ?>
+        </table>
     </main>
 </body>

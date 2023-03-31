@@ -4,8 +4,13 @@
 	</header>
 	<main>
     <div class='evenAbout'> 
-        <?php echo Asset::img('CharlieFormal.jpg') ?> 
-        <p>hicdcndjcdjndcjdncdjcndjcdncdjcdedecececejcndncdncdkdcdkndcndcjdjcdncdjncdjcdncdjcndcjdncdjcnjndcndj</p>
+        <?php echo Asset::img('SamMcKayPic.jpg') ?> 
+        <h3>Sam McKay</h3>
+        <p>Hello! My name is Sam McKay and I am in the last semester of my senior 
+            year here at CSU. While at CSU I have been learning about C, C++, Java, 
+            JS, Machine Learning, software development, software testing, and in 
+            this class PHP/HTML! I was grateful to be able to stretch my creative 
+            capabilities within this project, I hope you like it.</p>
         
             
     </div>
