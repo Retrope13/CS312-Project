@@ -9,12 +9,12 @@
 </head>
 <body>
     <header>
-        <?php echo Asset::img('ColorGarden.png'); ?>
-        <h1>The Color Garden</h1>
+            <?php echo Asset::img('ColorGarden.png') ; ?>
+        <h1 class="templateTitle">The Color Garden</h1>
         <div>
-            <button><a href="./index">Home</a></button>
-            <button><a href="./about">About us</a></button>
-            <button><a href="./table">Color Picker</a></button>
+            <a href="./index" class="Homeb"><button>Home</button></a>
+            <a href="./about" class="Aboutb"><button>About us</button></a>
+            <a href="./table" class="Pickerb"><button>Color Picker</button></a>
         </div>
     </header>
     <main>
