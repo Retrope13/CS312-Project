@@ -1,8 +1,52 @@
-table {
-    border-collapse: collapse;
+/*The first (upper) table is a 2 column by x row table, where x is the number of colors indicated by
+ the parameter.  The left column is 20% of the table width and the right column is 80%.  The table
+  spans most of the width of the page.  There is no header row on this table.*/
+.tableOne{
+  border-collapse: collapse;
+  border: 1px solid black;
   }
-  td {
+  .tableOne td {
     border: 1px solid black;
     width: 100px;
     height: 100px;
+    padding: 10px;
+  }
+  .tableOne td:first-child {
+    width: 20%; /* set the width of the first column to 20% */
+    font-weight: bold;
+    padding: 10px;
+  }
+  .tableOne td:last-child {
+    width: 80%; /* set the width of the last column to 80% */
+    padding: 10px;
+  }
+
+
+/*The upper-leftmost cell is empty.  The remaining cells across the top are lettered with capital letters
+ in alphabetical order starting with "A" and going to "Z" (using "Z" for the max size of 26).  The cells in
+  the leftmost column are numbered starting in the second row with "1" and numbering each row consecutively.*/
+.tableTwo{
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  .tableTwo td {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+  }
+  .tableTwo tr:first-child {
+    width: 100px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  .tableTwo td:first-child td:first-child {
+    font-weight: bold;
+  }
+  .tableTwo td:first-child:not(:first-child){
+    text-align: center;
+  }
+  .table2 tr:not(:first-child) td:first-child {
+    text-align: center; 
+    background-color: lightgray; 
   }

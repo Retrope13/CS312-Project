@@ -1,0 +1,20 @@
+<?php defined('COREPATH') or exit('No direct script access allowed'); ?>
+
+ERROR - 2023-03-31 00:14:41 --> Error - syntax error, unexpected '}', expecting '(' in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/classes/controller/colorpicker.php on line 39
+ERROR - 2023-03-31 00:14:53 --> Error - syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST) in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/classes/controller/colorpicker.php on line 42
+ERROR - 2023-03-31 00:16:44 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting ',' or ';' in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:16:53 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:17:26 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:17:28 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:18:01 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:18:06 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '}', expecting end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 00:26:55 --> Notice - Undefined variable: alphbet in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 52
+ERROR - 2023-03-31 00:27:21 --> Notice - Undefined index: j in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 52
+ERROR - 2023-03-31 00:27:44 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected '-', expecting ']' in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0
+ERROR - 2023-03-31 11:26:56 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 67
+ERROR - 2023-03-31 11:27:17 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 67
+ERROR - 2023-03-31 11:28:24 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 76
+ERROR - 2023-03-31 11:54:06 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 76
+ERROR - 2023-03-31 11:56:26 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 78
+ERROR - 2023-03-31 11:56:31 --> Notice - Undefined offset: 26 in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/colorpicker/colorTable.php on line 78
+ERROR - 2023-03-31 17:19:19 --> Fatal Error - Method Fuel\Core\View::__toString() must not throw an exception, caught ParseError: syntax error, unexpected end of file in /s/parsons/g/under/gabimcd/local_html/CS312-Project/fuel/app/views/template.php on line 0

@@ -1,4 +1,5 @@
 <?php
+use Fuel\Core\Form;
 
 class Controller_ColorPicker extends Controller_Template {
 
@@ -32,9 +33,9 @@ class Controller_ColorPicker extends Controller_Template {
         $this->template->css = "table.css";
         $this->template->content = View::forge('colorpicker/colorTable.php', $data);
 
-        if(isset($_GET['rows'])) {
+        if (isset($_GET['rows'])) {
             $rows = $_GET['rows'];
-        }
+        }   
     }
 
 

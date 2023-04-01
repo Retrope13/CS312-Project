@@ -12,9 +12,9 @@
         <?php echo Asset::img('ColorGarden.png'); ?>
         <h1>The Color Garden</h1>
         <div>
-            <button><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/index">Home</a></button>
-            <button><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/about">About us</a></button>
-            <button><a href="https://cs.colostate.edu:4444/~sammckay/CS312-Project/fuelviews/index.php/colorpicker/table">Color Picker</a></button>
+            <button><a href="./index">Home</a></button>
+            <button><a href="./about">About us</a></button>
+            <button><a href="./table">Color Picker</a></button>
         </div>
     </header>
     <main>
