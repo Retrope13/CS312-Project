@@ -50,3 +50,70 @@
     text-align: center; 
     background-color: lightgray; 
   }
+
+
+  h1 {
+    display: inline-flex;
+    position:absolute;
+    margin-top: 2%;
+    color:#fff;
+}
+
+img {
+    display: inline;
+}
+
+div {
+    display: inline-flex;
+    position: absolute;
+    margin-left: 29%;
+    margin-top: 2.5%;
+}
+
+#form_submit {
+  margin-top: 1%;
+  margin-left: 45.2%;
+  width: 150px;
+}
+
+#form_rows {
+  position: static;
+  margin-top: 1%;
+  margin-left: 43%;
+  border-radius: 5px;
+}
+
+#form_colors {
+  position:static;
+  margin-top: 1%;
+  margin-left: 42.55%;
+  border-radius: 5px;
+}
+
+
+button {
+  margin-right: 5%;
+  width: 150px;
+  background-color: #2d4473;
+  border-color: #2d4473;
+  border-radius: 5px;
+  color: #fff;
+}
+
+main {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #fff;
+}
+
+body {
+  background-color: #1e335c;
+}
+
+.Homeb {
+  margin-top: 0%;
+  margin-right: 5%;
+}
+
+.Aboutb {
+  margin-right: 5%;
+}

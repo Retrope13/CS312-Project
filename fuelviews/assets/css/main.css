@@ -1,5 +1,6 @@
 main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
 }
 
 body {
@@ -9,25 +10,12 @@ body {
 
 a {
     text-decoration: none;
-    color: #fff;
-}
-
-#rows {
-    border-radius: 5px;
-    margin-left: 43%;
-    text-align: center;
-}
-
-#colors {
-    margin-top: 1%;
-    margin-left: 43%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-#submit {
-    margin-left: 43%;
+    margin-right: 5%;
     width: 150px;
+    background-color: #2d4473;
+    border-color: #2d4473;
+    border-radius: 5px;
+    color: #fff;
 }
 
 h1 {
@@ -52,11 +40,33 @@ div {
     margin-top: 2.5%;
 }
 
+
+#form_submit {
+    margin-top: 1%;
+    margin-left: 45.1%;
+    width: 150px;
+}
+
+#form_rows {
+    position: static;
+    margin-top: 1%;
+    margin-left: 43%;
+    border-radius: 5px;
+}
+
+#form_colors {
+    position:static;
+    margin-top: 1%;
+    margin-left: 42.55%;
+    border-radius: 5px;
+}
+
 button {
     margin-right: 5%;
     width: 150px;
     background-color: #2d4473;
     border-color: #2d4473;
     border-radius: 5px;
+    color: #fff;
 }
 

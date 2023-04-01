@@ -5,6 +5,7 @@ body {
 h2 {
     text-align: center;
     font-size: xx-large;
+    color: #fff;
 }
 
 .oddAbout {
@@ -50,7 +51,28 @@ h2 {
     padding-left: 10px;
 }
 
-h3 {
+img {
+    display: inline;
+}
+
+Button {
+    margin-right: 5%;
+    width: 150px;
+    background-color: #2d4473;
+    border-color: #2d4473;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.Homeb {
+    margin-left: 33%;
+    margin-top: 10%;
+}
+
+.templateTitle {
     text-align: left;
     padding-right: 10px;
+    color: #fff;
+    display: inline;
+    padding-top: 5%;
 }
