@@ -12,9 +12,9 @@
         <?php echo Asset::img('ColorGarden.png'); ?>
         <h1>The Color Garden</h1>
         <div>
-            <button><a href="./index">Home</a></button>
-            <button><a href="./about">About us</a></button>
-            <button><a href="./table">Color Picker</a></button>
+            <a href="./index"><button>Home</button></a>
+            <a href="./about"><button>About us</button></a>
+            <a href="./table"><button>Color Picker</button></a>
         </div>
     </header>
     <main>
