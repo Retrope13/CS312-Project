@@ -19,7 +19,7 @@
                 $rows = Input::get('rows');
                 $colors = Input::get('colors');
                 $errors = [];
-                if ($rows > 26) {
+                if ($rows > 26 or $rows < 1) {
                     $errors[] = "Rows: Please enter a number between 1 and 26";
                 }
                 if ($colors > 10 or $colors < 1) {
