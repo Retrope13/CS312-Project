@@ -3,10 +3,10 @@
   spans most of the width of the page.  There is no header row on this table.*/
 .tableOne{
   border-collapse: collapse;
-  border: 1px solid black;
+  border: 1px solid #fff;
   }
   .tableOne td {
-    border: 1px solid black;
+    border: 1px solid #fff;
     width: 100px;
     height: 100px;
     padding: 10px;
@@ -30,7 +30,7 @@
     margin: 20px auto;
   }
   .tableTwo td {
-    border: 1px solid black;
+    border: 1px solid #fff;
     width: 100px;
     height: 100px;
     padding: 10px;
@@ -50,3 +50,68 @@
     text-align: center; 
     background-color: lightgray; 
   }
+
+
+  main {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: #1e335c;
+}
+
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#rows {
+    border-radius: 5px;
+    margin-left: 43%;
+    text-align: center;
+}
+
+#colors {
+    margin-top: 1%;
+    margin-left: 43%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#submit {
+    margin-left: 43%;
+    width: 150px;
+}
+
+h1 {
+    display: inline-flex;
+    position:absolute;
+    margin-top: 2%;
+    color:#fff;
+}
+
+h3 {
+    color:#fff;
+}
+
+img {
+    display: inline;
+}
+
+div {
+    display: inline-flex;
+    position: absolute;
+    margin-left: 29%;
+    margin-top: 2.5%;
+}
+
+button {
+    margin-right: 5%;
+    width: 150px;
+    background-color: #2d4473;
+    border-color: #2d4473;
+    border-radius: 5px;
+    color:#fff;
+}
+
