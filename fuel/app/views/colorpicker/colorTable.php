@@ -1,6 +1,6 @@
 <body>
     <header>
-		<h3>Home Page</h3>
+		<h3>Color Picker Page</h3>
 	</header>
 	<main>
         <?php echo Form::open(array('action' => 'index.php/colorpicker/table', 'method' => 'get')); ?>
