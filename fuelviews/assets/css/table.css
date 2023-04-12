@@ -39,12 +39,15 @@
     width: 100px;
     font-weight: bold;
     padding: 10px;
+    color: #fff;
   }
   .tableTwo td:first-child td:first-child {
     font-weight: bold;
+    color: #fff;
   }
   .tableTwo td:first-child:not(:first-child){
     text-align: center;
+    color: #fff;
   }
   .table2 tr:not(:first-child) td:first-child {
     text-align: center; 
@@ -54,6 +57,7 @@
 
   main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
 }
 
 body {
@@ -70,6 +74,7 @@ a {
     border-radius: 5px;
     margin-left: 43%;
     text-align: center;
+    color: #fff;
 }
 
 #colors {
@@ -77,6 +82,7 @@ a {
     margin-left: 43%;
     border-radius: 5px;
     text-align: center;
+    color: #fff;
 }
 
 #submit {
@@ -86,7 +92,6 @@ a {
 
 h1 {
     display: inline-flex;
-    position:absolute;
     margin-top: 2%;
     color:#fff;
 }
@@ -96,15 +101,9 @@ h3 {
 }
 
 img {
-    display: inline;
+    display: flex;
 }
 
-div {
-    display: inline-flex;
-    position: absolute;
-    margin-left: 29%;
-    margin-top: 2.5%;
-}
 
 button {
     margin-right: 5%;

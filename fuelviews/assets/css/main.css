@@ -32,8 +32,6 @@ a {
 
 h1 {
     display: inline-flex;
-    position:absolute;
-    margin-top: 2%;
     color:#fff;
 }
 
@@ -42,14 +40,7 @@ h3 {
 }
 
 img {
-    display: inline;
-}
-
-div {
-    display: inline-flex;
-    position: absolute;
-    margin-left: 29%;
-    margin-top: 2.5%;
+    display:flex;
 }
 
 button {
