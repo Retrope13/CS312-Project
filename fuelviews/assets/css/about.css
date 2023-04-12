@@ -54,3 +54,13 @@ h3 {
     text-align: left;
     padding-right: 10px;
 }
+
+button {
+    margin-right: 5%;
+    width: 150px;
+    background-color: #2d4473;
+    border-color: #2d4473;
+    border-radius: 5px;
+    color:#fff;
+}
+
