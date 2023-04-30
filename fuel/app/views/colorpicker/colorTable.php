@@ -7,6 +7,7 @@
     $fuelController = new Controller_ColorPicker($request);
     ?>
 
+<br>
 <?php echo Form::open(array('action' => 'index.php/colorpicker/table', 'method' => 'get')); ?>
 <?php echo Form::label('Rows', 'Number of Rows:'); ?>
     <?php echo Form::input('rows', $fuelController->getRows(), array('placeholder' => 'Enter number of rows')); ?>
@@ -17,7 +18,6 @@
 
     <?php echo Form::close(); ?>
     <head>
-        <title>Color Table</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <h3>Colors</h3>
