@@ -95,6 +95,10 @@ h1 {
     color:#fff;
 }
 
+#sameColorError {
+  color: red;
+}
+
 h3 {
     color:#fff;
     margin-bottom: 3%;
