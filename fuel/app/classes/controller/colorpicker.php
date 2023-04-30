@@ -61,9 +61,9 @@ class Controller_ColorPicker extends Controller_Template {
           Session::set_flash('error', 'make sure that the number of rows is greater than 0 and less than 27. Colors must also be greater than 0 and less than 11');
         }
         elseif($rows < 1 || $rows > 26) {
-          Session::set_flash('error', 'make sure that rows is > 0 <= 26');
+          Session::set_flash('error', 'make sure that rows is greater 0 and less than 27');
         }elseif($colors < 1 || $colors > 10) {
-          Session::set_flash('error', 'make sure that colors is > 0 <= 10');
+          Session::set_flash('error', 'make sure that colors is greater than 0 and less than 11');
         }
       }
     }
