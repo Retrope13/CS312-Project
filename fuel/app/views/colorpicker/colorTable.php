@@ -30,6 +30,7 @@
         $errors = [];
         if (Session::get_flash('error')) {
             echo Session::get_flash('error');
+            return null;
         } else {
             for ($i = 0; $i < $colors; $i++) {
                 $selected = array_fill(0, 10, '');
