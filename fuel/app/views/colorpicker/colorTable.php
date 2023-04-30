@@ -18,6 +18,7 @@
     <?php echo Form::close(); ?>
     <head>
         <title>Color Table</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <h3>Colors</h3>
     <table class="tableOne">
@@ -30,10 +31,11 @@
         if (Session::get_flash('error')) {
             echo Session::get_flash('error');
         } else {
+            echo "<script>setColor()</script>";
             for ($i = 0; $i < $colors; $i++) {
                 $selected = array_fill(0, 10, '');
                 $selected[$i] = 'selected';
-                echo "<tr><td><select name='colors'>";
+                echo "<tr><td><select name='colors' class='colors'>";
                 echo "<option value='red' $selected[0]>red</option>
                 <option value='orange' $selected[1]>orange</option>
                 <option value='yellow' $selected[2]>yellow</option>
@@ -57,20 +59,43 @@
         <?php
         $rows = $fuelController->getRows();
         $alphabet = range('A', 'Z');
-
-        for ($row = 0; $row < $rows + 1; $row++) {
-            echo "<tr>";
-            if ($row == 0) {
-                echo "<td>   </td>";
-            }
-            for ($col = 0; $col < $rows; $col++) {
+        if ($rows > 0) {
+            for ($row = 0; $row < $rows + 1; $row++) {
+                echo "<tr>";
                 if ($row == 0) {
-                    echo "<td>$alphabet[$col]   </td>";
-                } else {
-                    if ($col == 0 && $row > 0) {
-                        echo "<td>$row</td>";
-                    }
                     echo "<td>   </td>";
+                }
+                for ($col = 0; $col < $rows; $col++) {
+                    if ($row == 0) {
+                        echo "<td>$alphabet[$col]   </td>";
+                    } else {
+                        if ($col == 0 && $row > 0) {
+                            echo "<td>$row</td>";
+                        }
+                        echo "<td>   </td>";
+                    }
                 }
             }
         }
+        
+?>
+<script>
+    let selectedOption;
+    function setColor() {
+        selectedOption = 'red';
+    }
+
+        $(document).ready(function() {
+            $(".tableTwo td").click(function() {
+                this.id = selectedOption;
+                console.log("fdsafdsa");
+            })
+        })
+
+        $(document).ready(function() {
+            $('.colors').on('click', function() {
+                selectedOption = $(this).val();
+                console.log(selectedOption);
+            })
+        })
+</script>
