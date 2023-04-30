@@ -1,9 +1,11 @@
 <?php 
     use Fuel\Core\Request;
     use Fuel\Core\Form;
+    use Fuel\Core\Session;
 
     $request = Request::forge();
-    $fuelController = new Controller_ColorPicker($request);?>
+    $fuelController = new Controller_ColorPicker($request);
+    ?>
 
 <?php echo Form::open(array('action' => 'index.php/colorpicker/table', 'method' => 'get')); ?>
 <?php echo Form::label('Rows', 'Number of Rows:'); ?>
@@ -22,38 +24,30 @@
         <?php
         $rows = $fuelController->getRows();
         $colors = $fuelController->getColors();
+        $selected = array_fill(0, 10, '');
         $col = 0;
         $errors = [];
-        if ($rows > 26 or $rows < 1) {
-            $errors[] = "Rows: Please enter a number between 1 and 26";
-        }
-        if ($colors > 10 or $colors < 1) {
-            $errors[] = "Colors: Please enter a number between 1 and 10";
-        }
-        if (!empty($errors)) {
-            echo "There were errors with your input:<br>";
-            foreach ($errors as $error) {
-                echo "- " . $error . "<br>";
-            }
+        if (Session::get_flash('error')) {
+            echo Session::get_flash('error');
         } else {
             for ($i = 0; $i < $colors; $i++) {
+                $selected = array_fill(0, 10, '');
+                $selected[$i] = 'selected';
+                echo "<tr><td><select name='colors'>";
+                echo "<option value='red' $selected[0]>red</option>
+                <option value='orange' $selected[1]>orange</option>
+                <option value='yellow' $selected[2]>yellow</option>
+                <option value='green' $selected[3]>green</option>
+                <option value='blue' $selected[4]>blue</option>
+                <option value='purple' $selected[5]>purple</option>
+                <option value='gray' $selected[6]>gray</option>
+                <option value='brown' $selected[7]>brown</option>
+                <option value='black' $selected[8]>black</option>
+                <option value='teal' $selected[9]>teal</option>";
+
+                echo '</select></td><td></td>';
                 echo "<tr>";
 
-                echo "<td><select name = 'color' + $rows>
-                    <option value='red'>red</option>
-                    <option value='orange'>orange</option>
-                    <option value='yellow'>yellow</option>
-                    <option value='green'>green</option>
-                    <option value='blue'>blue</option>
-                    <option value='purple'>purple</option>
-                    <option value='grey'>grey</option>
-                    <option value='brown'>brown</option>
-                    <option value='black'>black</option>
-                    <option value='teal'>teal</option>
-                    </select></td><td></td>";
-
-
-                echo "<tr>";
             }
         }
         ?>
@@ -62,27 +56,21 @@
     <table class="tableTwo">
         <?php
         $rows = $fuelController->getRows();
+        $alphabet = range('A', 'Z');
 
-        if ((int)$rows > 26) {
-            $errors[] = "Rows: Please enter a number between 1 and 26";
-        }
-        if (!empty($errors)) {
-        } else {
-            $alphabet = range('A', 'Z');
-            for ($row = 0; $row < $rows + 1; $row++) {
-                echo "<tr>";
+        for ($row = 0; $row < $rows + 1; $row++) {
+            echo "<tr>";
+            if ($row == 0) {
+                echo "<td>   </td>";
+            }
+            for ($col = 0; $col < $rows; $col++) {
                 if ($row == 0) {
-                    echo "<td>   </td>";
-                }
-                for ($col = 0; $col < $rows; $col++) {
-                    if ($row == 0) {
-                        echo "<td>$alphabet[$col]   </td>";
-                    } else {
-                        if ($col == 0 && $row > 0) {
-                            echo "<td>$row</td>";
-                        }
-                        echo "<td>   </td>";
+                    echo "<td>$alphabet[$col]   </td>";
+                } else {
+                    if ($col == 0 && $row > 0) {
+                        echo "<td>$row</td>";
                     }
+                    echo "<td>   </td>";
                 }
             }
         }
