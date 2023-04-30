@@ -31,7 +31,6 @@
         if (Session::get_flash('error')) {
             echo Session::get_flash('error');
         } else {
-            echo "<script>setColor()</script>";
             for ($i = 0; $i < $colors; $i++) {
                 $selected = array_fill(0, 10, '');
                 $selected[$i] = 'selected';
@@ -77,13 +76,9 @@
                 }
             }
         }
-        
+
 ?>
 <script>
-    let selectedOption;
-    function setColor() {
-        selectedOption = 'red';
-    }
 
         $(document).ready(function() {
             $(".tableTwo td").click(function() {
