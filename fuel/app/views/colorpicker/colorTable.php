@@ -36,16 +36,16 @@
                 $selected = array_fill(0, 10, '');
                 $selected[$i] = 'selected';
                 echo "<tr><td><select name='colors' class='colors'>";
-                echo "<option value='red' $selected[0]>red</option>
-                <option value='orange' $selected[1]>orange</option>
-                <option value='yellow' $selected[2]>yellow</option>
-                <option value='green' $selected[3]>green</option>
-                <option value='blue' $selected[4]>blue</option>
-                <option value='purple' $selected[5]>purple</option>
-                <option value='gray' $selected[6]>gray</option>
-                <option value='brown' $selected[7]>brown</option>
-                <option value='black' $selected[8]>black</option>
-                <option value='teal' $selected[9]>teal</option>";
+                echo "<option value='red' $selected[0]>Red</option>
+                <option value='orange' $selected[1]>Orange</option>
+                <option value='yellow' $selected[2]>Yellow</option>
+                <option value='green' $selected[3]>Green</option>
+                <option value='blue' $selected[4]>Blue</option>
+                <option value='purple' $selected[5]>Purple</option>
+                <option value='gray' $selected[6]>Gray</option>
+                <option value='brown' $selected[7]>Brown</option>
+                <option value='black' $selected[8]>Black</option>
+                <option value='teal' $selected[9]>Teal</option>";
 
                 echo '</select></td><td></td>';
                 echo "<tr>";
@@ -80,18 +80,30 @@
 
 ?>
 <script>
+    let colorOptions = ["red", "orange", "yellow", "green", "blue", "purple", "gray", "brown", "black", "teal"];
+    let selectedColors = [];
+    var colors = <?php echo json_encode($colors);?>;
+    if (colors>0 && colors < 11) {
+        for (i = 0; i < colors; i++) {
+            selectedColors.push(colorOptions[i]);
+        }
+    }
 
         $(document).ready(function() {
             $(".tableTwo td").click(function() {
                 this.id = selectedOption;
-                console.log("fdsafdsa");
+                console.log(colors);
             })
         })
 
         $(document).ready(function() {
             $('.colors').on('click', function() {
                 selectedOption = $(this).val();
-                console.log(selectedOption);
+                if ($.inArray(selectedOption, selectedColors)) {
+                    console.log("error");
+                }
+                console.log($('.colors').index($(this)));
+                console.log(selectedColors);
             })
         })
 </script>
