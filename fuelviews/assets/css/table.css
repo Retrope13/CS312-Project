@@ -77,14 +77,6 @@ a {
     color: #fff;
 }
 
-#colors {
-    margin-top: 1%;
-    margin-left: 43%;
-    border-radius: 5px;
-    text-align: center;
-    color: #fff;
-}
-
 #submit {
     margin-left: 43%;
     width: 150px;
@@ -93,6 +85,10 @@ a {
 h1 {
     display: inline-flex;
     color:#fff;
+}
+
+#sameColorError {
+  color: red;
 }
 
 h3 {
@@ -115,3 +111,42 @@ button {
     color:#fff;
 }
 
+#red {
+  background-color: red;
+}
+
+#orange {
+  background-color: orange;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#green {
+  background-color: green;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#purple {
+  background-color: purple;
+}
+
+#gray {
+  background-color: gray;
+}
+
+#brown {
+  background-color: brown;
+}
+
+#black {
+  background-color: black;
+}
+
+#teal {
+  background-color: teal;
+}
