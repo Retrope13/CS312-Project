@@ -1,3 +1,11 @@
+
+h4 {
+  color:#fff;
+  margin-bottom: 2%;
+  background-color: #1e335c;
+}
+
+
 /*The first (upper) table is a 2 column by x row table, where x is the number of colors indicated by
  the parameter.  The left column is 20% of the table width and the right column is 80%.  The table
   spans most of the width of the page.  There is no header row on this table.*/
@@ -15,11 +23,71 @@
     width: 20%; /* set the width of the first column to 20% */
     font-weight: bold;
     padding: 10px;
+    
   }
   .tableOne td:last-child {
     width: 80%; /* set the width of the last column to 80% */
     padding: 10px;
+    
   }
+
+.colorEditor {
+  position: absolute;
+  left: 40%;
+  top: 51%;
+  width: 40%;
+  height: 40%;
+  background-color: #1e335c;
+}
+
+#addColorDiv {
+  background-color: #1e335c;
+  position: absolute;
+  width: 20%;
+  border-radius: 5px;
+}
+
+#removeColorDiv {
+  background-color: #1e335c;
+  position: absolute;
+  left: 50%;
+  width: 20%;
+  border-radius: 5px;
+}
+
+#changeColorDiv {
+  background-color: #1e335c;
+  position: absolute;
+  left: 100%;
+  width: 20%;
+  border-radius: 5px;
+}
+
+#Name {
+  display: block;
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+#Hex {
+  display: block;
+  margin-bottom: 5%;
+}
+
+#removeColorh4 {
+  margin-right: 15%;
+  width: 150px;
+  background-color: #2d4473;
+  border-color: #2d4473;
+  color:#fff;
+}
+
+.changeColorh4 {
+  width: 150px;
+  background-color: #1e335c;
+  border-color: #1e335c;
+  color:#fff;
+}
 
 
 /*The upper-leftmost cell is empty.  The remaining cells across the top are lettered with capital letters
@@ -95,6 +163,10 @@ h3 {
     color:#fff;
     margin-bottom: 3%;
     margin-top: 3%;
+}
+
+p {
+  color: #000;
 }
 
 img {

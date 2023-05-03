@@ -46,7 +46,7 @@ class Controller_ColorPicker extends Controller_Template {
     public function action_table() {
 
         $data = array();
-        $this->template->title = "test";
+        $this->template->title = "Color Picker";
         $this->template->css = "table.css";
         $this->template->content = View::forge('colorpicker/colorTable', $data);
     if (empty($_GET)) {
