@@ -66,7 +66,15 @@
             echo Session::get_flash('error');
             return null;
         } else {
-           $dropdownItems = " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
+            $db->close();
+            for ($i = 0; $i < $colors; $i++) {
+                $db = new SQLite3("colors.db");
+
+                $colorList = $db->query('SELECT * FROM colors');
+                $selected = array_fill(0, 10, '');
+                $selected[$i] = 'selected';
+                echo "<tr><td><select name='colors' class='colors'>";
+                echo " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
                 <option value='orange' $selected[1]>".$colorList->fetchArray()['name']."</option>
                 <option value='yellow' $selected[2]>".$colorList->fetchArray()['name']."</option>
                 <option value='green' $selected[3]>".$colorList->fetchArray()['name']."</option>
@@ -76,15 +84,12 @@
                 <option value='brown' $selected[7]>".$colorList->fetchArray()['name']."</option>
                 <option value='black' $selected[8]>".$colorList->fetchArray()['name']."</option>
                 <option value='teal' $selected[9]>".$colorList->fetchArray()['name']."</option>";
-            for ($i = 0; $i < $colors; $i++) {
-                $selected = array_fill(0, 10, '');
-                $selected[$i] = 'selected';
-                echo "<tr><td><select name='colors' class='colors'>";
-                echo $dropdownItems;
 
                 echo '</select></td><td>gfds</td><tr>';
+                $db->close();
 
             }
+
         }
         ?>
     </table>
@@ -98,7 +103,20 @@
         <div id="removeColorDiv">
     <h4 class="removeColorh4">Remove a color</h4>
     <?php
+    $db = new SQLite3("colors.db");
+
+    $colorList = $db->query('SELECT * FROM colors');
         echo "<tr><td><select name='colors' class='colors'>";
+        $dropdownItems = " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
+        <option value='orange' $selected[1]>".$colorList->fetchArray()['name']."</option>
+        <option value='yellow' $selected[2]>".$colorList->fetchArray()['name']."</option>
+        <option value='green' $selected[3]>".$colorList->fetchArray()['name']."</option>
+        <option value='blue' $selected[4]>".$colorList->fetchArray()['name']."</option>
+        <option value='purple' $selected[5]>".$colorList->fetchArray()['name']."</option>
+        <option value='gray' $selected[6]>".$colorList->fetchArray()['name']."</option>
+        <option value='brown' $selected[7]>".$colorList->fetchArray()['name']."</option>
+        <option value='black' $selected[8]>".$colorList->fetchArray()['name']."</option>
+        <option value='teal' $selected[9]>".$colorList->fetchArray()['name']."</option>";
         echo $dropdownItems;
         echo "<tr><td><select name='colors' class='colors'><tr>";
     ?>
