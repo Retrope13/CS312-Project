@@ -12,6 +12,7 @@
 <?php echo Form::label('Rows', 'Number of Rows:'); ?>
     <?php echo Form::input('rows', $fuelController->getRows(), array('placeholder' => 'Enter number of rows')); ?>
     <br>
+    <br>
     <?php echo Form::label('Colors', 'Number of Colors:'); ?>
     <?php echo Form::input('colors', $fuelController->getColors(), array('placeholder' => 'Enter number of colors')); ?>
     <?php echo Form::submit('submit', 'Submit'); ?>
@@ -47,7 +48,7 @@
                 <option value='black' $selected[8]>Black</option>
                 <option value='teal' $selected[9]>Teal</option>";
 
-                echo '</select></td><td></td>';
+                echo '</select></td><td>gfds</td>';
                 echo "<tr>";
 
             }
@@ -80,10 +81,12 @@
 
 ?>
 <script>
+    let selectedCells = [];
+    let currCell = [];
     let colorOptions = ["red", "orange", "yellow", "green", "blue", "purple", "gray", "brown", "black", "teal"];
     let selectedColors = [];
     var colors = <?php echo json_encode($colors);?>;
-    if (colors>0 && colors < 11) {
+    if (colors>0 && colors<11) {
         for (i = 0; i < colors; i++) {
             selectedColors.push(colorOptions[i]);
         }
@@ -92,7 +95,11 @@
         $(document).ready(function() {
             $(".tableTwo td").click(function() {
                 this.id = selectedOption;
-                console.log(colors);
+                let row = $(this).parent().index();
+                let col = $(this).index();
+                currCell = [row, col];
+                selectedCells.push(currCell);
+                console.log(selectedOption);
             })
         })
 
