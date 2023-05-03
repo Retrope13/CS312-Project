@@ -9,11 +9,12 @@
     $db = new SQLite3("colors.db");
 
     $colorList = $db->query('SELECT * FROM colors');
-    if (isset($addBool)) {
+    $rowCount = 0;
 
-    } else {
-        $addBool = false;
+    while ($row = $colorList->fetchArray()) {
+        $rowCount++;
     }
+
     ?>
 
 <script>
@@ -69,22 +70,16 @@
             $db->close();
             for ($i = 0; $i < $colors; $i++) {
                 $db = new SQLite3("colors.db");
-
                 $colorList = $db->query('SELECT * FROM colors');
-                $selected = array_fill(0, 10, '');
-                $selected[$i] = 'selected';
-                echo "<tr><td><select name='colors' class='colors'>";
-                echo " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
-                <option value='orange' $selected[1]>".$colorList->fetchArray()['name']."</option>
-                <option value='yellow' $selected[2]>".$colorList->fetchArray()['name']."</option>
-                <option value='green' $selected[3]>".$colorList->fetchArray()['name']."</option>
-                <option value='blue' $selected[4]>".$colorList->fetchArray()['name']."</option>
-                <option value='purple' $selected[5]>".$colorList->fetchArray()['name']."</option>
-                <option value='gray' $selected[6]>".$colorList->fetchArray()['name']."</option>
-                <option value='brown' $selected[7]>".$colorList->fetchArray()['name']."</option>
-                <option value='black' $selected[8]>".$colorList->fetchArray()['name']."</option>
-                <option value='teal' $selected[9]>".$colorList->fetchArray()['name']."</option>";
 
+                echo "<tr><td><select name='colors' class='colors'>";
+                $selected = array_fill(0, $rowCount, '');
+                $selected[$i] = ' selected';
+                $pos = 0;
+                while ($row = $colorList->fetchArray()) {
+                    echo "<option value=".$row['hexcode']." ".$selected[$pos].">".$row['name']."</option>";
+                    $pos++;
+                }
                 echo '</select></td><td>gfds</td><tr>';
                 $db->close();
 
@@ -107,17 +102,9 @@
 
     $colorList = $db->query('SELECT * FROM colors');
         echo "<tr><td><select name='colors' class='colors'>";
-        $dropdownItems = " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
-        <option value='orange' $selected[1]>".$colorList->fetchArray()['name']."</option>
-        <option value='yellow' $selected[2]>".$colorList->fetchArray()['name']."</option>
-        <option value='green' $selected[3]>".$colorList->fetchArray()['name']."</option>
-        <option value='blue' $selected[4]>".$colorList->fetchArray()['name']."</option>
-        <option value='purple' $selected[5]>".$colorList->fetchArray()['name']."</option>
-        <option value='gray' $selected[6]>".$colorList->fetchArray()['name']."</option>
-        <option value='brown' $selected[7]>".$colorList->fetchArray()['name']."</option>
-        <option value='black' $selected[8]>".$colorList->fetchArray()['name']."</option>
-        <option value='teal' $selected[9]>".$colorList->fetchArray()['name']."</option>";
-        echo $dropdownItems;
+        while ($row = $colorList->fetchArray()) {
+            echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
+        };
         echo "<tr><td><select name='colors' class='colors'><tr>";
     ?>
     <button style="margin-top: 87%" class="confirmAdd" onClick="handleRemove(event)">Confirm</button>
@@ -128,7 +115,9 @@
         <!--Make another dropdown for them to select the color they want to change and then have a name and hex input for them to create a new color-->
         <?php
             echo "<tr><td><select name='colors' class='colors'>";
-            echo $dropdownItems;
+            while ($row = $colorList->fetchArray()) {
+                echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
+            };;
             echo "<tr><td><select name='colors' class='colors'><tr>";
         ?>
         Name:<input type="text" id="Name" onInput="handleName(event)">
@@ -195,6 +184,7 @@
                 if(colorHex[0] != "#") {
                     console.log("bad bad boy");
                 } else {
+                    colors++;
                         //add the color to the db table
                 }
         })
