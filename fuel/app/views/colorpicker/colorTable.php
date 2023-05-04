@@ -9,35 +9,13 @@
     $db = new SQLite3("colors.db");
 
     $colorList = $db->query('SELECT * FROM colors');
-    if (isset($addBool)) {
+    $rowCount = 0;
 
-    } else {
-        $addBool = false;
+    while ($row = $colorList->fetchArray()) {
+        $rowCount++;
     }
+
     ?>
-
-<script>
-    var colorName = "";
-    let colorHex = "";
-    let colorRemove = "";
-
-    function handleName(event) {
-        colorName = event.target.value;
-    }
-
-    function handleHex(event) {
-        colorHex = event.target.value;
-    }
-
-    function handleRemove(event) {
-        document.getElementById()
-        console.log(colorRemove);
-    }
-
-    function handleChange(event) {
-        //get colorName and colorHex and make a query to the db table to remove the previous one and add a new one?
-    }
-    </script>
 
 
 <br>
@@ -66,60 +44,66 @@
             echo Session::get_flash('error');
             return null;
         } else {
-           $dropdownItems = " <option value='red' $selected[0]>".$colorList->fetchArray()['name']."</option>
-                <option value='orange' $selected[1]>".$colorList->fetchArray()['name']."</option>
-                <option value='yellow' $selected[2]>".$colorList->fetchArray()['name']."</option>
-                <option value='green' $selected[3]>".$colorList->fetchArray()['name']."</option>
-                <option value='blue' $selected[4]>".$colorList->fetchArray()['name']."</option>
-                <option value='purple' $selected[5]>".$colorList->fetchArray()['name']."</option>
-                <option value='gray' $selected[6]>".$colorList->fetchArray()['name']."</option>
-                <option value='brown' $selected[7]>".$colorList->fetchArray()['name']."</option>
-                <option value='black' $selected[8]>".$colorList->fetchArray()['name']."</option>
-                <option value='teal' $selected[9]>".$colorList->fetchArray()['name']."</option>";
+            $db->close();
             for ($i = 0; $i < $colors; $i++) {
-                $selected = array_fill(0, 10, '');
-                $selected[$i] = 'selected';
-                echo "<tr><td><select name='colors' class='colors'>";
-                echo $dropdownItems;
+                $db = new SQLite3("colors.db");
+                $colorList = $db->query('SELECT * FROM colors');
 
+                echo "<tr><td><select name='colors' class='colors'>";
+                $selected = array_fill(0, $rowCount, '');
+                $selected[$i] = ' selected';
+                $pos = 0;
+                while ($row = $colorList->fetchArray()) {
+                    echo "<option value=".$row['hexcode']." ".$selected[$pos].">".$row['name']."</option>";
+                    $pos++;
+                }
                 echo '</select></td><td>gfds</td><tr>';
+                $db->close();
 
             }
+
         }
         ?>
     </table>
     <div class="colorEditor">
         <div id="addColorDiv">
             <h4 id="addColorh4">Add a color:</h4>
-            Name:<input type="text" id="Name" onInput="handleName(event)">
-            Hex: (start with #)<input type="text" id="Hex" onInput="handleHex(event)">
+            Name:<input type="text" class="addName" id="addName">
+            Hex: (start with #)<input type="text" class="addHex" id="addHex">
             <button class="confirmAdd">Confirm</button>
         </div>
         <div id="removeColorDiv">
     <h4 class="removeColorh4">Remove a color</h4>
     <?php
-        echo "<tr><td><select name='colors' class='colors'>";
-        echo $dropdownItems;
-        echo "<tr><td><select name='colors' class='colors'><tr>";
+    $db = new SQLite3("colors.db");
+
+    $colorList = $db->query('SELECT * FROM colors');
+        echo "<tr><td><select name='removeColorDD' class='removeColorDD'>";
+        while ($row = $colorList->fetchArray()) {
+            echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
+        };
+        echo "<tr><td><select name='removeColorDD' class='removeColorDD'><tr>";
     ?>
-    <button style="margin-top: 87%" class="confirmAdd" onClick="handleRemove(event)">Confirm</button>
+    <button style="margin-top: 87%" class="confirmRemove" id='confirmRemove'>Confirm</button>
     </div>
     <div id="changeColorDiv">
     <h4 class="changeColorh4">Change a color:</h4>
 
         <!--Make another dropdown for them to select the color they want to change and then have a name and hex input for them to create a new color-->
         <?php
-            echo "<tr><td><select name='colors' class='colors'>";
-            echo $dropdownItems;
-            echo "<tr><td><select name='colors' class='colors'><tr>";
+            echo "<tr><td><select name='changeColorDD' class='changeColorDD'>";
+            while ($row = $colorList->fetchArray()) {
+                echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
+            }
+            echo "</select></td></tr>";
         ?>
-        Name:<input type="text" id="Name" onInput="handleName(event)">
-        Hex: (start with #)<input type="text" id="Hex" onInput="handleHex(event)">
-        <button onClick="handleChange(event)">Confirm</button>
+        Name:<input type="text" id="changeName" class="changeName">
+        Hex: (start with #)<input type="text" id="changeHex" class="changeHex">
+        <button class="confirmChange" id="confirmChange">Confirm</button>
     </div>
     </div>
     <h3>Table</h3>
-    <table class="tableTwo">
+    <table class="tableTwo" id="canvas">
         <?php
         $rows = $fuelController->getRows();
         $alphabet = range('A', 'Z');
@@ -136,9 +120,10 @@
                         if ($col == 0 && $row > 0) {
                             echo "<td>$row</td>";
                         }
-                        echo "<td>   </td>";
+                        echo "<td class='colorable'>   </td>";
                     }
                 }
+                echo "</tr>";
             }
         }
 
@@ -147,39 +132,71 @@
     let selectedCells = [];
     let currCell = [];
     let selectedColors = [];
+    let selectedOption;
+    var oldOption;
     var colors = <?php echo json_encode($colors);?>;
 
 
         $(document).ready(function() {
-            //attempt changing previous color when new one is selected
-            $(".tableTwo td").click(function() {
-                this.id = selectedOption;
-                let row = $(this).parent().index();
-                let col = $(this).index();
-                currCell = [row, col];
-                selectedCells.push(currCell);
-                console.log(selectedOption);
-            })
-
             //handle dropdown click
             $('.colors').on('click', function() {
                 selectedOption = $(this).val();
-                if ($.inArray(selectedOption, selectedColors)) {
-                    console.log("error");
+                $(this).parent().css('background-color', selectedOption);
+
+            })
+
+            //handle dropdown Change
+            $('.colors').on('change', function() {
+                oldOption = selectedOption;
+                selectedOption = $(this).val();
+                var table = document.getElementById("canvas");
+                
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    for (var j = 0; j < row.cells.length; j++){
+                        var cell = row.cells[j];
+                        if (cell.id == oldOption) {
+                            console.log(selectedOption);
+                            $(cell).css('background-color', selectedOption);
+                            cell.id = selectedOption;
+                        }
+                    }
                 }
-                console.log($('.colors').index($(this)));
-                console.log(selectedColors);
-        })
+            })
+
+            //handle cell click
+            $('.colorable').click(function() {
+                var table = document.getElementById('canvas');
+                var row = $(this).parent().index();
+                var col = $(this).index();
+
+                $(this).css('background-color', selectedOption);
+                
+                var cell = table.rows[row].cells[col];
+                cell.id = selectedOption;
+            })
 
 
         //This is where I'm handling the buttons that connect to the db table
         $('.confirmAdd').on('click', function() {
-                if(colorHex[0] != "#") {
-                    console.log("bad bad boy");
-                } else {
-                        //add the color to the db table
-                }
+            var inputName = document.getElementById('addName');
+            var inputHex = document.getElementById('addHex');
+                console.log(inputName.value);
+                console.log(inputHex.value);
         })
+
+        $('.confirmChange').on('click', function() {
+            var inputName = document.getElementById('changeName');
+            var inputHex = document.getElementById('changeHex');
+            console.log(inputName.value);
+            console.log(inputHex.value);
+        })
+
+        $('.confirmRemove').on('click', function() {
+            console.log("Kill John Lennon");
+        })
+
+
         })
 
 </script>
