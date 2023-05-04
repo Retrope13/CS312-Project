@@ -136,25 +136,38 @@
     var oldOption;
     var colors = <?php echo json_encode($colors);?>;
 
-    $(document).ready(function() {
-        $('.colorable').on('click', function() {
-            var rowIndex = $(this).parent().index();
-            var colIndex = $(this).index();
-            selectedCells.push([rowIndex, colIndex]);
+        $(document).ready(function() {      //Display row and column clicked in tableOne
+
+            let selectedRowIndex;
+            let alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+            $('.tableOne .colors').on('click', function() {
+                selectedRowIndex = $(this).closest('tr').index();
+                console.log('Selected row index: ' + selectedRowIndex);
+            });
+
+            $('.colorable').on('click', function() {
+                var rowIndex = $(this).parent().index();
+                rowIndex = alpha[rowIndex-1];
+                var colIndex = $(this).index();
+                selectedCells.push([rowIndex, colIndex]);
+                console.log("selected: " + selectedCells);
+                selectedCells.sort();
         
-            var cellString = "";
-            for (var i = 0; i < selectedCells.length; i++) {
-                cellString += "(" + selectedCells[i].join(", ") + ")";
-            }
-            cellString = cellString.slice(0, -2);
+                var cellString = "";
+                for (var i = 0; i < selectedCells.length; i++) {
+                    cellString += "" + selectedCells[i][0] + selectedCells[i][1] + " ";
+                    // console.log("CELLSTRING" +cellString);
+                }
+                console.log(cellString);
         
-            $('.tableOne tr:eq(0) td:eq(1)').text(cellString);
+                $('.tableOne tr:eq(' + selectedRowIndex + ') td:eq(1)').text(cellString);
+
+            });
         });
-    });
 
 
         $(document).ready(function() {
-            //handle dropdown click
             $('.colors').on('click', function() {
                 selectedOption = $(this).val();
                 $(this).parent().css('background-color', selectedOption);
