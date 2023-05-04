@@ -94,8 +94,8 @@
             echo "<tr><td><select name='changeColorDD' class='changeColorDD'>";
             while ($row = $colorList->fetchArray()) {
                 echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
-            };
-
+            }
+            echo "</select></td></tr>";
         ?>
         Name:<input type="text" id="changeName" class="changeName">
         Hex: (start with #)<input type="text" id="changeHex" class="changeHex">
@@ -103,7 +103,7 @@
     </div>
     </div>
     <h3>Table</h3>
-    <table class="tableTwo">
+    <table class="tableTwo" id="canvas">
         <?php
         $rows = $fuelController->getRows();
         $alphabet = range('A', 'Z');
@@ -132,6 +132,8 @@
     let selectedCells = [];
     let currCell = [];
     let selectedColors = [];
+    let selectedOption;
+    var oldOption;
     var colors = <?php echo json_encode($colors);?>;
 
 
@@ -139,14 +141,39 @@
             //handle dropdown click
             $('.colors').on('click', function() {
                 selectedOption = $(this).val();
+                $(this).parent().css('background-color', selectedOption);
+
+            })
+
+            //handle dropdown Change
+            $('.colors').on('change', function() {
+                oldOption = selectedOption;
+                selectedOption = $(this).val();
+                var table = document.getElementById("canvas");
+                
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    for (var j = 0; j < row.cells.length; j++){
+                        var cell = row.cells[j];
+                        if (cell.id == oldOption) {
+                            console.log(selectedOption);
+                            $(cell).css('background-color', selectedOption);
+                            cell.id = selectedOption;
+                        }
+                    }
+                }
             })
 
             //handle cell click
             $('.colorable').click(function() {
+                var table = document.getElementById('canvas');
                 var row = $(this).parent().index();
                 var col = $(this).index();
 
                 $(this).css('background-color', selectedOption);
+                
+                var cell = table.rows[row].cells[col];
+                cell.id = selectedOption;
             })
 
 
