@@ -65,16 +65,19 @@
         }
         ?>
     </table>
-    <div class="colorEditor">
-        <div id="addColorDiv">
-            <h4 id="addColorh4">Add a color:</h4>
-            Name:<input type="text" class="addName" id="addName">
-            Hex: (start with #)<input type="text" class="addHex" id="addHex">
-            <button class="confirmAdd">Confirm</button>
+    <?php 
+    if (!$colors|| !$rows) {
+    } else {
+    echo "<div class='colorEditor'>
+        <div id='addColorDiv'>
+            <h4 id='addColorh4'>Add a color:</h4>
+            Name:<input type='text' class='addName' id='addName'>
+            Hex: (start with #)<input type='text' class='addHex' id='addHex'>
+            <button class='confirmAdd'>Confirm</button>
         </div>
-        <div id="removeColorDiv">
-    <h4 class="removeColorh4">Remove a color</h4>
-    <?php
+        <div id='removeColorDiv'>
+    <h4 class='removeColorh4'>Remove a color</h4>";
+    }
     $db = new SQLite3("colors.db");
 
     $colorList = $db->query('SELECT * FROM colors');
@@ -83,25 +86,22 @@
             echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
         };
         echo "<tr><td><select name='removeColorDD' class='removeColorDD'><tr>";
+    echo 
+    "<button style='margin-top: 87%' class='confirmRemove' id='confirmRemove'>Confirm</button>
+    </div>
+    <div id='changeColorDiv'>
+    <h4 class='changeColorh4'>Change a color:</h4>";
+    echo "<tr><td><select name='changeColorDD' class='changeColorDD'>";
+    while ($row = $colorList->fetchArray()) {
+        echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
+    }
+        echo "</select></td></tr>
+        Name:<input type='text' id='changeName' class='changeName'>
+        Hex: (start with #)<input type='text' id='changeHex' class='changeHex'>
+        <button class='confirmChange' id='confirmChange'>Confirm</button>
+    </div>
+    </div>";
     ?>
-    <button style="margin-top: 87%" class="confirmRemove" id='confirmRemove'>Confirm</button>
-    </div>
-    <div id="changeColorDiv">
-    <h4 class="changeColorh4">Change a color:</h4>
-
-        <!--Make another dropdown for them to select the color they want to change and then have a name and hex input for them to create a new color-->
-        <?php
-            echo "<tr><td><select name='changeColorDD' class='changeColorDD'>";
-            while ($row = $colorList->fetchArray()) {
-                echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
-            }
-            echo "</select></td></tr>";
-        ?>
-        Name:<input type="text" id="changeName" class="changeName">
-        Hex: (start with #)<input type="text" id="changeHex" class="changeHex">
-        <button class="confirmChange" id="confirmChange">Confirm</button>
-    </div>
-    </div>
     <h3>Table</h3>
     <table class="tableTwo" id="canvas">
         <?php
