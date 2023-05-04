@@ -136,6 +136,22 @@
     var oldOption;
     var colors = <?php echo json_encode($colors);?>;
 
+    $(document).ready(function() {
+        $('.colorable').on('click', function() {
+            var rowIndex = $(this).parent().index();
+            var colIndex = $(this).index();
+            selectedCells.push([rowIndex, colIndex]);
+        
+            var cellString = "";
+            for (var i = 0; i < selectedCells.length; i++) {
+                cellString += "(" + selectedCells[i].join(", ") + ")";
+            }
+            cellString = cellString.slice(0, -2);
+        
+            $('.tableOne tr:eq(0) td:eq(1)').text(cellString);
+        });
+    });
+
 
         $(document).ready(function() {
             //handle dropdown click
@@ -193,8 +209,10 @@
         })
 
         $('.confirmRemove').on('click', function() {
-            console.log("Kill John Lennon");
-        })
+            var inputName = document.getElementById('removeColorDD');
+            console.log(inputName);
+  
+});
 
 
         })
