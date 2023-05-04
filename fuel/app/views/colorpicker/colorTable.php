@@ -156,7 +156,7 @@
         
                 var cellString = "";
                 for (var i = 0; i < selectedCells.length; i++) {
-                    cellString += "" + selectedCells[i][0] + selectedCells[i][1] + " ";
+                    cellString += "" + selectedCells[i][0] + selectedCells[i][1] + ", ";
                     // console.log("CELLSTRING" +cellString);
                 }
                 console.log(cellString);
