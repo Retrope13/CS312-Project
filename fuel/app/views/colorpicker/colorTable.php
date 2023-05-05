@@ -2,6 +2,10 @@
     use Fuel\Core\Request;
     use Fuel\Core\Form;
     use Fuel\Core\Session;
+ // start session to save data for printview
+    session_start();
+// start output buffering to save data for printview
+    ob_start();
 
     $request = Request::forge();
     $fuelController = new Controller_ColorPicker($request);
@@ -82,7 +86,7 @@
                 echo "<tr><td><select name='colors' class='colors'>";
                 echo $dropdownItems;
 
-                echo '</select></td><td>gfds</td><tr>';
+                echo '</select></td><td></td><tr>';
 
             }
         }
@@ -102,7 +106,7 @@
         echo $dropdownItems;
         echo "<tr><td><select name='colors' class='colors'><tr>";
     ?>
-    <button style="margin-top: 87%" class="confirmAdd" onClick="handleRemove(event)">Confirm</button>
+    <button style="margin-top: 0" class="confirmAdd" onClick="handleRemove(event)">Confirm</button>
     </div>
     <div id="changeColorDiv">
     <h4 class="changeColorh4">Change a color:</h4>
@@ -143,6 +147,23 @@
         }
 
 ?>
+</table> 
+
+
+   
+
+<button id="printViewButton" onclick="window.location.href = 'print';">Print View</button>
+
+
+<script>
+
+    document.getElementById('printViewButton').addEventListener('click', function() {
+        // clicks the print view button and sends to print.php
+        // window.location.href = 'print';
+
+    });
+</script>
+
 <script>
     let selectedCells = [];
     let currCell = [];
@@ -181,5 +202,6 @@
                 }
         })
         })
+       
 
 </script>

@@ -67,4 +67,16 @@ class Controller_ColorPicker extends Controller_Template {
         }
       }
     }
+
+    public function action_print() {
+      $data = array(
+        'rows' => $this->getRows(),
+        'colors' => $this->getColors()
+      );
+
+      $this->template->title = "Print View";
+      $this->template->css = "print.css";
+      return Response::forge(View::forge('colorpicker/print', $data));
+  }
+  
   }
