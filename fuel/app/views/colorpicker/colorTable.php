@@ -81,7 +81,7 @@
     $db = new SQLite3("colors.db");
 
     $colorList = $db->query('SELECT * FROM colors');
-        echo "<tr><td><select name='removeColorDD' class='removeColorDD'>";
+        echo "<tr><td><select name='removeColorDD' class='removeColorDD' id='removeColorDD'>";
         while ($row = $colorList->fetchArray()) {
             echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
         };
@@ -91,7 +91,7 @@
     </div>
     <div id='changeColorDiv'>
     <h4 class='changeColorh4'>Change a color:</h4>";
-    echo "<tr><td><select name='changeColorDD' class='changeColorDD'>";
+    echo "<tr><td><select name='changeColorDD' class='changeColorDD' id='changeColorDD'>";
     while ($row = $colorList->fetchArray()) {
         echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
     }
@@ -133,6 +133,8 @@
     let currCell = [];
     let selectedColors = [];
     let selectedOption;
+    let removeColorName;
+    let removeColorHex;
     var oldOption;
     var colors = <?php echo json_encode($colors);?>;
 
@@ -208,26 +210,78 @@
 
         //This is where I'm handling the buttons that connect to the db table
         $('.confirmAdd').on('click', function() {
-            var inputName = document.getElementById('addName');
-            var inputHex = document.getElementById('addHex');
-                console.log(inputName.value);
-                console.log(inputHex.value);
-        })
+            var inputName = document.getElementById('addName').value;
+            var inputHex = document.getElementById('addHex').value;
+            $.ajax({
+                type: 'POST',
+                url: "<?php echo $_SERVER['PHP_SELF']; ?>",
+                data: { inputName: inputName, inputHex: inputHex },
+                success: function(response) {
+                    console.log(response); // Handle the response from the server
+                }
+            });
 
-        $('.confirmChange').on('click', function() {
-            var inputName = document.getElementById('changeName');
-            var inputHex = document.getElementById('changeHex');
-            console.log(inputName.value);
-            console.log(inputHex.value);
-        })
+            <?php 
+            $db = new SQLite3("colors.db");
+            if (isset($_POST['inputName']) && isset($_POST['inputHex'])) {
+                $inputName = $_POST['inputName'];
+                $inputHex = $_POST['inputHex'];
+                $stmt = $db->prepare('INSERT INTO colors (name, hexcode) VALUES (:value1, :value2)');
+    
+                $stmt->bindValue(':value1', $inputName);
+                $stmt->bindValue(':value2', $inputHex);
+    
+                // Execute the statement
+                $result = $stmt->execute();
+                
+            }
+            $db->close();
+            ?>
+            });
 
-        $('.confirmRemove').on('click', function() {
-            var inputName = document.getElementById('removeColorDD');
-            console.log(inputName);
+        });
+
+        $(document).ready(function() {
+            $('.confirmChange').on('click', function() {
+                var inputName = document.getElementById('changeName');
+                var inputHex = document.getElementById('changeHex');
+            })
+
+            $('.confirmRemove').on('click', function() {
+                $.ajax({
+                type: 'POST',
+                url: "<?php echo $_SERVER['PHP_SELF']; ?>",
+                data: { removeName: removeColorName, removeHex: removeColorHex },
+                success: function(response) {
+                    console.log(response); // Handle the response from the server
+                }
+                });
+                <?php
+                $db = new SQLite3("colors.db");
+                if (isset($_POST['removeName']) && isset($_POST['removeHex'])) {
+                    $removeName = $_POST['removeName'];
+                    $removeHex = $_POST['removeHex'];
+                    $stmt = $db->prepare('DELETE FROM colors WHERE name = :value1 AND hexcode = :value2');
+        
+                    $stmt->bindValue(':value1', $removeName);
+                    $stmt->bindValue(':value2', $removeHex);
+        
+                    // Execute the statement
+                    $result = $stmt->execute();
+                
+                }
+            $db->close();
+            ?>
+        
+            });
+
+            var removeColorDD = document.getElementById('removeColorDD');
+            removeColorDD.addEventListener("click", function() {
+                removeColorName = removeColorDD.options[removeColorDD.selectedIndex].textContent;
+                removeColorHex = removeColorDD.options[removeColorDD.selectedIndex].value;
+                console.log(removeColorHex);
+            })
   
-});
-
-
-        })
+        });
 
 </script>
