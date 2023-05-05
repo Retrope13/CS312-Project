@@ -87,7 +87,7 @@
         };
         echo "<tr><td><select name='removeColorDD' class='removeColorDD'><tr>";
     echo 
-    "<button style='margin-top: 87%' class='confirmRemove' id='confirmRemove'>Confirm</button>
+    "<button style='margin-top: 10%' class='confirmRemove' id='confirmRemove'>Confirm</button>
     </div>
     <div id='changeColorDiv'>
     <h4 class='changeColorh4'>Change a color:</h4>";
@@ -96,6 +96,7 @@
         echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
     }
         echo "</select></td></tr>
+        <br>
         Name:<input type='text' id='newName' class='newName'>
         Hex: (start with #)<input type='text' id='newHex' class='newHex'>
         <button class='confirmChange' id='confirmChange'>Confirm</button>
