@@ -198,3 +198,7 @@ button {
     border-radius: 5px;
     color:#fff;
 }
+
+.Error_h1 {
+  background-color: #FF0000;
+}
