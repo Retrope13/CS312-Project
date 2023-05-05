@@ -96,8 +96,8 @@
         echo "<option value=".$row['hexcode'].">".$row['name']."</option>";
     }
         echo "</select></td></tr>
-        Name:<input type='text' id='changeName' class='changeName'>
-        Hex: (start with #)<input type='text' id='changeHex' class='changeHex'>
+        Name:<input type='text' id='newName' class='newName'>
+        Hex: (start with #)<input type='text' id='newHex' class='newHex'>
         <button class='confirmChange' id='confirmChange'>Confirm</button>
     </div>
     </div>";
@@ -133,10 +133,16 @@
     let currCell = [];
     let selectedColors = [];
     let selectedOption;
+
+
     let removeColorName;
     let removeColorHex;
+
+
+    let changeColorName;
+    let changeColorHex;
+
     var oldOption;
-    var colors = <?php echo json_encode($colors);?>;
 
         $(document).ready(function() {      //Display row and column clicked in tableOne
 
@@ -243,10 +249,40 @@
 
         $(document).ready(function() {
             $('.confirmChange').on('click', function() {
-                var inputName = document.getElementById('changeName');
-                var inputHex = document.getElementById('changeHex');
-            })
+                var newName = document.getElementById('newName').value;
+                var newHex = document.getElementById('newHex').value;
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo $_SERVER['PHP_SELF']; ?>",
+                    data: { changeName: changeColorName, changeHex: changeColorHex, newName: newName, newHex: newHex },
+                    success: function(response) {
+                        console.log(response); // Handle the response from the server
+                    }
+                });
+                    console.log(changeColorName + "       " + changeColorHex);
+                    console.log(newName + "     " + newHex);
+                <?php
+                $db = new SQLite3("colors.db");
+                if (isset($_POST['changeName']) && isset($_POST['changeHex']) && isset($_POST['newName']) && isset($_POST['newHex'])) {
+                    //system for removing a color from the list
+                    $changeName = $_POST['changeName'];
+                    $changeHex = $_POST['changeHex'];
+                    $newName = $_POST['newName'];
+                    $newHex = $_POST['newHex'];
+                    $stmt = $db->prepare('UPDATE colors SET name = :newName, hexcode = :newHex WHERE name = :changeName AND hexcode = :changeHex');
+                    $stmt->bindValue(':newName', $newName);
+                    $stmt->bindValue(':newHexcode', $newHex);
+                    $stmt->bindValue(':changeHex', $changeHex);
+                    $stmt->bindValue(':changeName', $changeName);
+                    $result = $stmt->execute();
+                }
+                $db->close();
+            ?>
+        
+            });
 
+
+            //connection of remove button to the db table which uses ajax post to convert js variable to php
             $('.confirmRemove').on('click', function() {
                 $.ajax({
                 type: 'POST',
@@ -275,13 +311,20 @@
         
             });
 
+            //event listener that grabs value and name of color for removal from the dropdown
             var removeColorDD = document.getElementById('removeColorDD');
             removeColorDD.addEventListener("click", function() {
                 removeColorName = removeColorDD.options[removeColorDD.selectedIndex].textContent;
                 removeColorHex = removeColorDD.options[removeColorDD.selectedIndex].value;
-                console.log(removeColorHex);
+            })
+
+            //event listener that grabs value and name of color for changing from dropdown
+            var changeColorDD = document.getElementById('changeColorDD');
+            changeColorDD.addEventListener("click", function() {
+                changeColorName = changeColorDD.options[changeColorDD.selectedIndex].textContent;
+                changeColorHex = changeColorDD.options[changeColorDD.selectedIndex].value;
             })
   
-        });
+    });
 
 </script>
