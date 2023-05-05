@@ -71,7 +71,9 @@ class Controller_ColorPicker extends Controller_Template {
     public function action_print() {
       $data = array(
         'rows' => $this->getRows(),
-        'colors' => $this->getColors()
+        'colors' => $this->getColors(),
+      'title' => 'Print View',
+      'css' => 'print.css'
       );
 
       $this->template->title = "Print View";

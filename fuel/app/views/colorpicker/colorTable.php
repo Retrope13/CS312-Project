@@ -137,7 +137,7 @@
 
    
 
-<button id="printViewButton" onclick="window.location.href = 'print';">Print View</button>
+<button id="printViewButton" onclick="window.location.href = 'print?rows=<?php echo $rows?>&colors=<?php echo $colors?>';">Print View</button>
 
 
 <script>

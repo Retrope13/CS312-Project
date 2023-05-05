@@ -1,14 +1,18 @@
-<!-- print.php -->
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print View</title>
-    <link rel="stylesheet" href="print.css">
-</head>
+    <title>
+        <?php echo $title?>
+    </title>
+    
+    <link type="text/css" rel="stylesheet" href="https://cs.colostate.edu:4444/~gabimcd/CS312-Project/fuelviews/assets/css/<?php echo $css ?>" />
 <body>
-    <h3>Printable Table</h3>
+    <header>
+            <img src="https://cs.colostate.edu:4444/~gabimcd/CS312-Project/fuelviews/assets/img/GrayGarden.png" alt="Color Garden Logo" id="logo">
+            <h3><?php echo $title ?></h3>
+    </header>
+    <main>
+
+
     <table class="printTable">
         <?php
         // $rows = $rows;
@@ -18,7 +22,7 @@
             for ($row = 0; $row < $rows + 1; $row++) {
                 echo "<tr>";
                 if ($row == 0) {
-                    echo "<td>  ! </td>";
+                    echo "<td>   </td>";
                 }
                 for ($col = 0; $col < $rows; $col++) {
                     if ($row == 0) {
@@ -27,12 +31,15 @@
                         if ($col == 0 && $row > 0) {
                             echo "<td>$row</td>";
                         }
-                        echo "<td>   </td>";
+                        echo "<td class='colorable'>   </td>";
                     }
                 }
+                echo "</tr>";
             }
         }
         ?>
     </table>
+    </main>
 </body>
+
 </html>
