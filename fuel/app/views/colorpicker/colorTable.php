@@ -148,25 +148,34 @@
         $(document).ready(function() {      //Display row and column clicked in tableOne
 
             let selectedRowIndex;
+            let selectedRows = [];
             let alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
             $('.tableOne .colors').on('click', function() {
                 selectedRowIndex = $(this).closest('tr').index();
-                console.log('Selected row index: ' + selectedRowIndex);
+                // console.log('Selected row index: ' + selectedRowIndex);
             });
 
             $('.colorable').on('click', function() {
                 var rowIndex = $(this).parent().index();
-                rowIndex = alpha[rowIndex-1];
+                // rowIndex = alpha[rowIndex-1];
                 var colIndex = $(this).index();
-                selectedCells.push([rowIndex, colIndex]);
-                console.log("selected: " + selectedCells);
+                colIndex=alpha[colIndex-1];
+                console.log("COLINDEX:" + colIndex);
+
+                if (!selectedRows[selectedRowIndex]) {
+                    selectedRows[selectedRowIndex] = [];
+                }
+                var colorSelectedRows = selectedRows[selectedRowIndex];
+
+                colorSelectedRows.push([rowIndex, colIndex]);
                 selectedCells.sort();
+                console.log("COL SELECT ROWS: " + colorSelectedRows);
         
                 var cellString = "";
-                for (var i = 0; i < selectedCells.length; i++) {
-                    cellString += "" + selectedCells[i][0] + selectedCells[i][1] + ", ";
-                    // console.log("CELLSTRING" +cellString);
+                for (var i = 0; i < colorSelectedRows.length; i++) {
+                    cellString += "" + colorSelectedRows[i][1] + colorSelectedRows[i][0] + ", ";
+                     console.log("CELLSTRING" +cellString);
                 }
                 console.log(cellString);
         
