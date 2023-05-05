@@ -19,6 +19,7 @@
 
 
 <br>
+<h1 style="color: #FF0000;" id="Error_h1"></h1>
 <?php echo Form::open(array('action' => 'index.php/colorpicker/table', 'method' => 'get')); ?>
 <?php echo Form::label('Rows', 'Number of Rows:'); ?>
     <?php echo Form::input('rows', $fuelController->getRows(), array('placeholder' => 'Enter number of rows')); ?>
@@ -49,7 +50,7 @@
                 $db = new SQLite3("colors.db");
                 $colorList = $db->query('SELECT * FROM colors');
 
-                echo "<tr><td><select name='colors' class='colors'>";
+                echo "<tr><td><select name='colors' class='colors' id=".$i.">";
                 $selected = array_fill(0, $rowCount, '');
                 $selected[$i] = ' selected';
                 $pos = 0;
@@ -77,7 +78,6 @@
         </div>
         <div id='removeColorDiv'>
     <h4 class='removeColorh4'>Remove a color</h4>";
-    }
     $db = new SQLite3("colors.db");
 
     $colorList = $db->query('SELECT * FROM colors');
@@ -102,6 +102,7 @@
         <button class='confirmChange' id='confirmChange'>Confirm</button>
     </div>
     </div>";
+}
     ?>
     <h3>Table</h3>
     <table class="tableTwo" id="canvas">
@@ -134,16 +135,30 @@
     let currCell = [];
     let selectedColors = [];
     let selectedOption;
-
-
+    
     let removeColorName;
     let removeColorHex;
-
-
+    
     let changeColorName;
     let changeColorHex;
-
+    
     var oldOption;
+
+    //get an array that contains all of the names of the colors in the db table
+    
+    <?php
+        $db = new SQLite3("colors.db");
+        $colorList = $db->query('SELECT * FROM colors');
+        $finalColorList = array();
+        while ($row = $colorList->fetchArray()) {
+            array_push($finalColorList, $row['name']);
+        }
+
+    ?>
+    var colorOptions = <?php echo json_encode($finalColorList);?>
+
+    console.log(colorOptions);
+
 
         $(document).ready(function() {      //Display row and column clicked in tableOne
 
@@ -153,7 +168,7 @@
 
             $('.tableOne .colors').on('click', function() {
                 selectedRowIndex = $(this).closest('tr').index();
-                // console.log('Selected row index: ' + selectedRowIndex);
+
             });
 
             $('.colorable').on('click', function() {
@@ -189,26 +204,35 @@
             $('.colors').on('click', function() {
                 selectedOption = $(this).val();
                 $(this).parent().css('background-color', selectedOption);
-
+                $('.colors option:selected').each(function() {
+                    selectedColors.push($(this).val());
+                })
             })
 
             //handle dropdown Change
-            $('.colors').on('change', function() {
+            $('.tableOne .colors').on('change', function() {
                 oldOption = selectedOption;
                 selectedOption = $(this).val();
-                var table = document.getElementById("canvas");
-                
-                for (var i = 0; i < table.rows.length; i++) {
-                    var row = table.rows[i];
-                    for (var j = 0; j < row.cells.length; j++){
-                        var cell = row.cells[j];
-                        if (cell.id == oldOption) {
-                            console.log(selectedOption);
-                            $(cell).css('background-color', selectedOption);
-                            cell.id = selectedOption;
+                if (selectedColors.includes(selectedOption)) {
+                    var errorh1 = document.getElementById("Error_h1");
+                    errorh1.innerHTML = "You cannot select two of the same color";
+                    $(this).val(oldOption);
+                } else {
+                    var errorh1 = document.getElementById("Error_h1");
+                    errorh1.innerHTML = "";
+                    var table = document.getElementById("canvas");
+                    for (var i = 0; i < table.rows.length; i++) {
+                        var row = table.rows[i];
+                        for (var j = 0; j < row.cells.length; j++){
+                            var cell = row.cells[j];
+                            if (cell.id == oldOption) {
+                                $(cell).css('background-color', selectedOption);
+                                cell.id = selectedOption;
+                            }
                         }
                     }
                 }
+                selectedColors = [];
             })
 
             //handle cell click
@@ -233,7 +257,7 @@
                 url: "<?php echo $_SERVER['PHP_SELF']; ?>",
                 data: { inputName: inputName, inputHex: inputHex },
                 success: function(response) {
-                    console.log(response); // Handle the response from the server
+                    // Handle the response from the server
                     location.reload();
                 }
             });
@@ -267,12 +291,10 @@
                     url: "<?php echo $_SERVER['PHP_SELF']; ?>",
                     data: { changeName: changeColorName, changeHex: changeColorHex, newName: newName, newHex: newHex },
                     success: function(response) {
-                        console.log(response); // Handle the response from the server
+                        // Handle the response from the server
                         location.reload();
                     }
                 });
-                    console.log(changeColorName + "       " + changeColorHex);
-                    console.log(newName + "     " + newHex);
                 <?php
                 $db = new SQLite3("colors.db");
                 if (isset($_POST['changeName']) && isset($_POST['changeHex']) && isset($_POST['newName']) && isset($_POST['newHex'])) {
