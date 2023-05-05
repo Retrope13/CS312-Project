@@ -224,6 +224,7 @@
                 data: { inputName: inputName, inputHex: inputHex },
                 success: function(response) {
                     console.log(response); // Handle the response from the server
+                    location.reload();
                 }
             });
 
@@ -257,6 +258,7 @@
                     data: { changeName: changeColorName, changeHex: changeColorHex, newName: newName, newHex: newHex },
                     success: function(response) {
                         console.log(response); // Handle the response from the server
+                        location.reload();
                     }
                 });
                     console.log(changeColorName + "       " + changeColorHex);
@@ -277,7 +279,7 @@
                     $result = $stmt->execute();
                 }
                 $db->close();
-            ?>
+                ?>
         
             });
 
@@ -290,6 +292,7 @@
                 data: { removeName: removeColorName, removeHex: removeColorHex },
                 success: function(response) {
                     console.log(response); // Handle the response from the server
+                    location.reload();
                 }
                 });
                 <?php
