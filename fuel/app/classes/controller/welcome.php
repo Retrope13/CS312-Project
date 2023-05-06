@@ -44,6 +44,11 @@ class Controller_Welcome extends Controller
 		return Response::forge(Presenter::forge('welcome/hello'));
 	}
 
+
+	// // print view 
+	// public function action_print() {
+	// 	return Response::forge(View::forge('welcome/print'));
+	// }
 	/**
 	 * The 404 action for the application.
 	 *

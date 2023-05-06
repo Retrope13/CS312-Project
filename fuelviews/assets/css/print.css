@@ -1,0 +1,54 @@
+
+  /*The upper-leftmost cell is empty.  The remaining cells across the top are lettered with capital letters
+   in alphabetical order starting with "A" and going to "Z" (using "Z" for the max size of 26).  The cells in
+    the leftmost column are numbered starting in the second row with "1" and numbering each row consecutively.*/
+  .printTable{
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    .printTable td {
+      border: 1px solid #000;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+    }
+    .printTable tr:first-child {
+      width: 100px;
+      font-weight: bold;
+      padding: 10px;
+      color: #000;
+    }
+    .printTable td:first-child td:first-child {
+      font-weight: bold;
+      color: #000;
+    }
+    .printTable td:first-child:not(:first-child){
+      text-align: center;
+      color: #000;
+    }
+    .printTable tr:not(:first-child) td:first-child {
+      text-align: center; 
+      background-color: #fff; 
+    }
+  
+  
+    main {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color: #000;
+  }
+  
+  body {
+      background-color: #fff;
+  }
+  
+  
+  
+  h3 {
+      color:#000;
+      margin-bottom: 3%;
+      margin-top: 3%;
+  }
+  
+
+  
+  
