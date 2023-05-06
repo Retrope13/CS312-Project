@@ -2,6 +2,10 @@
     use Fuel\Core\Request;
     use Fuel\Core\Form;
     use Fuel\Core\Session;
+ // start session to save data for printview
+    session_start();
+// start output buffering to save data for printview
+    ob_start();
 
     $request = Request::forge();
     $fuelController = new Controller_ColorPicker($request);
@@ -58,7 +62,7 @@
                     echo "<option value=".$row['hexcode']." ".$selected[$pos].">".$row['name']."</option>";
                     $pos++;
                 }
-                echo '</select></td><td>gfds</td><tr>';
+                echo '</select></td><td></td><tr>';
                 $db->close();
 
             }
@@ -130,6 +134,23 @@
         }
 
 ?>
+</table> 
+
+
+   
+
+<button id="printViewButton" onclick="window.location.href = 'print?rows=<?php echo $rows?>&colors=<?php echo $colors?>';">Print View</button>
+
+
+<script>
+
+    document.getElementById('printViewButton').addEventListener('click', function() {
+        // clicks the print view button and sends to print.php
+        // window.location.href = 'print';
+
+    });
+</script>
+
 <script>
     let selectedCells = [];
     let currCell = [];
@@ -160,7 +181,8 @@
     console.log(colorOptions);
 
 
-        $(document).ready(function() {      //Display row and column clicked in tableOne
+        $(document).ready(function() {      
+            //Display row and column clicked in tableOne
 
             let selectedRowIndex;
             let selectedRows = [];
@@ -168,10 +190,11 @@
 
             $('.tableOne .colors').on('click', function() {
                 selectedRowIndex = $(this).closest('tr').index();
-
+                  
             });
-
+            // table two 
             $('.colorable').on('click', function() {
+                console.log("CELL CLICKED");
                 var rowIndex = $(this).parent().index();
                 // rowIndex = alpha[rowIndex-1];
                 var colIndex = $(this).index();
@@ -182,7 +205,7 @@
                     selectedRows[selectedRowIndex] = [];
                 }
                 var colorSelectedRows = selectedRows[selectedRowIndex];
-
+                console.log("selectedRowIndex: " + selectedRowIndex);
                 colorSelectedRows.push([rowIndex, colIndex]);
                 selectedCells.sort();
                 console.log("COL SELECT ROWS: " + colorSelectedRows);
@@ -190,20 +213,24 @@
                 var cellString = "";
                 for (var i = 0; i < colorSelectedRows.length; i++) {
                     cellString += "" + colorSelectedRows[i][1] + colorSelectedRows[i][0] + ", ";
-                     console.log("CELLSTRING" +cellString);
+                     console.log("CELLSTRING " + cellString);
                 }
                 console.log(cellString);
-        
+                
                 $('.tableOne tr:eq(' + selectedRowIndex + ') td:eq(1)').text(cellString);
-
+                // add color and cell to dictionary
+                
+                
             });
         });
 
-
+        // This activates the color in table one
         $(document).ready(function() {
             $('.colors').on('click', function() {
+                console.log("COLOR CLICKED");
                 selectedOption = $(this).val();
                 $(this).parent().css('background-color', selectedOption);
+                console.log(this.options[this.selectedIndex].text);
                 $('.colors option:selected').each(function() {
                     selectedColors.push($(this).val());
                 })
@@ -235,7 +262,7 @@
                 selectedColors = [];
             })
 
-            //handle cell click
+            //handle cell click to color the cell in table two
             $('.colorable').click(function() {
                 var table = document.getElementById('canvas');
                 var row = $(this).parent().index();

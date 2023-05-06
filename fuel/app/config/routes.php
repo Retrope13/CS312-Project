@@ -20,6 +20,9 @@ return array(
 
 	'_root_' => 'welcome/index',
 
+// print view
+	'colorpicker/print' => 'colorpicker/print',
+
 	/**
 	 * -------------------------------------------------------------------------
 	 *  Page not found
